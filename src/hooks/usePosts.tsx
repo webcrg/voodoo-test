@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react';
 import { getPosts, getUsers } from '@/api';
 import { IPost, IUser } from '@/interfaces';
+import { capitalizeFirst } from '@/helpers';
 
-function injectUserNameToPosts(posts: IPost[], users: IUser[]) {
-  return posts.map((post) => {
-    const findedUser = users.find((user) => user.id === post.userId);
+function getUserName(post: IPost, users: IUser[]) {
+  const findedUser = users.find((user) => user.id === post.userId);
+  return findedUser?.name ?? '';
+}
 
-    return { ...post, userName: findedUser?.name ?? '' };
-  });
+function transformPost(post: IPost, usersResponse: IUser[]) {
+  return {
+    ...post,
+    title: capitalizeFirst(post.title),
+    body: capitalizeFirst(post.body),
+    userName: getUserName(post, usersResponse),
+  };
 }
 
 function usePosts() {
@@ -18,16 +25,15 @@ function usePosts() {
       const postsResponse = await getPosts();
       const usersResponse = await getUsers();
 
-      const postsWithUserName = injectUserNameToPosts(
-        postsResponse.data,
-        usersResponse.data
-      );
-
-      setPosts(postsWithUserName);
+      return [postsResponse.data, usersResponse.data];
     };
 
     try {
-      fetchData();
+      fetchData()
+        .then(([postsResponse, usersResponse]) =>
+          postsResponse.map((post: IPost) => transformPost(post, usersResponse))
+        )
+        .then(setPosts);
     } catch (error) {
       console.log(error);
     }

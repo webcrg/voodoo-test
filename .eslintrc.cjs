@@ -34,5 +34,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react/prop-types': 'off',
     'react/jsx-wrap-multilines': 'off',
+    'function-paren-newline': 0,
   },
 };

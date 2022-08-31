@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Typography } from '@mui/material';
 import { IPost } from '@/interfaces';
+import { capitalizeFirst } from '@/helpers';
 
 function PostItem({ post }: { post: IPost }) {
   const { title, body, userName } = post;
