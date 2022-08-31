@@ -5,7 +5,6 @@ import { InputBase } from '@mui/material';
 const BootstrapInputStyled = styled(InputBase)(() => ({
   '& .MuiInputBase-input': {
     borderRadius: 4,
-    position: 'relative',
     backgroundColor: '#fcfcfb',
     border: '1px solid #ced4da',
     fontSize: 16,
@@ -22,7 +21,6 @@ const BootstrapInputStyled = styled(InputBase)(() => ({
     borderRadius: 4,
     marginRight: 0,
     marginBottom: 0,
-    position: 'relative',
     backgroundColor: '#fcfcfb',
     border: '1px solid #ced4da',
     borderRight: 0,
