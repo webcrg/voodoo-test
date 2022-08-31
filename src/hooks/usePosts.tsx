@@ -3,6 +3,13 @@ import { getPosts, getUsers } from '@/api';
 import { IPost, IUser } from '@/interfaces';
 import { capitalizeFirst } from '@/helpers';
 
+const fetchData = async () => {
+  const postsResponse = await getPosts();
+  const usersResponse = await getUsers();
+
+  return [postsResponse.data, usersResponse.data];
+};
+
 function getUserName(post: IPost, users: IUser[]) {
   const findedUser = users.find((user) => user.id === post.userId);
   return findedUser?.name ?? '';
@@ -21,13 +28,6 @@ function usePosts() {
   const [posts, setPosts] = useState<IPost[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const postsResponse = await getPosts();
-      const usersResponse = await getUsers();
-
-      return [postsResponse.data, usersResponse.data];
-    };
-
     try {
       fetchData()
         .then(([postsResponse, usersResponse]) =>
