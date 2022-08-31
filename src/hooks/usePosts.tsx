@@ -3,12 +3,12 @@ import { getPosts, getUsers } from '@/api';
 import { IPost, IUser } from '@/interfaces';
 import { capitalizeFirst } from '@/helpers';
 
-const fetchData = async () => {
+async function fetchData() {
   const postsResponse = await getPosts();
   const usersResponse = await getUsers();
 
   return [postsResponse.data, usersResponse.data];
-};
+}
 
 function getUserName(post: IPost, users: IUser[]) {
   const findedUser = users.find((user) => user.id === post.userId);
