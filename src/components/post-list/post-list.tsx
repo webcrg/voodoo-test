@@ -17,8 +17,8 @@ const breakpointColumnsObj = {
 const PostList = React.memo(({ posts, filter }: IPostListProps) => (
   <Masonry
     breakpointCols={breakpointColumnsObj}
-    className="my-masonry-grid"
-    columnClassName="my-masonry-grid_column"
+    className="masonry-grid"
+    columnClassName="masonry-grid_column"
   >
     {posts.map((post) => {
       const name = post.userName!.toLowerCase();

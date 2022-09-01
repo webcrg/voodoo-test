@@ -12,12 +12,12 @@ body {
   background-color: #ecf1f6;
 }
 
-.my-masonry-grid {
+.masonry-grid {
   display: flex;
   margin-left: -20px;
 }
 
-.my-masonry-grid_column {
+.masonry-grid_column {
   border-left: 20px solid transparent;
   background-clip: padding-box;
   & > div {
