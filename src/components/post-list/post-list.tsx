@@ -27,7 +27,12 @@ const PostList = React.memo(({ posts, filter }: IPostListProps) => (
       const isFilterMatch = name.indexOf(filterText) !== -1;
 
       return isEmptyFilter || isFilterMatch ? (
-        <PostItem key={post.id} post={post} />
+        <PostItem
+          key={post.id}
+          title={post.title}
+          body={post.body}
+          userName={post.userName!}
+        />
       ) : null;
     })}
   </Masonry>
