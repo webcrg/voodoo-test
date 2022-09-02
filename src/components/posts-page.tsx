@@ -8,7 +8,6 @@ import usePosts from '@/hooks/usePosts';
 const FILTER_DELAY = 200;
 
 function PostsPage() {
-  const [posts] = usePosts();
   const [filterValue, setFilterValue] = useState('');
   const [filterString, setFilterString] = useState('');
   const debouncedFilter = useDebouncedCallback(setFilterString, FILTER_DELAY);
@@ -22,7 +21,7 @@ function PostsPage() {
   return (
     <Layout>
       <Filter value={filterValue} onChangeHandler={onFilterChange} />
-      <PostList posts={posts} filter={filterString} />
+      <PostList filter={filterString} />
     </Layout>
   );
 }
