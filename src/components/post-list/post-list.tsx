@@ -1,26 +1,25 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
 import { PostItem } from './post-item';
-import { IPost } from '@/interfaces';
 import usePosts from '@/hooks/usePosts';
 
-interface IPostListProps {
-  filter: string;
-}
-
-const breakpointColumnsObj = {
+const breakpointColumns = {
   default: 3,
   900: 3,
   650: 2,
   500: 1,
 };
 
+interface IPostListProps {
+  filter: string;
+}
+
 const PostList = React.memo(({ filter }: IPostListProps) => {
   const [posts] = usePosts();
 
   return (
     <Masonry
-      breakpointCols={breakpointColumnsObj}
+      breakpointCols={breakpointColumns}
       className="masonry-grid"
       columnClassName="masonry-grid_column"
     >

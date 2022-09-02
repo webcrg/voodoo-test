@@ -3,7 +3,6 @@ import { useDebouncedCallback } from 'use-debounce';
 import { Layout } from '@/components/ui/layout';
 import { PostList } from './post-list';
 import { Filter } from './filter';
-import usePosts from '@/hooks/usePosts';
 
 const FILTER_DELAY = 200;
 
