@@ -1,6 +1,37 @@
 import { useEffect, useState } from 'react';
 import { getPosts, getUsers } from '@/api';
-import { IPost, IUser } from '@/interfaces';
+
+interface IPost {
+  body: string;
+  id: number;
+  title: string;
+  userId: number;
+  userName?: string;
+}
+
+interface IUser {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
 
 async function fetchData() {
   const postsResponse = await getPosts();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Container } from '@mui/material';
 import { useDebouncedCallback } from 'use-debounce';
-import { Layout } from '@/components/ui/layout';
 import { PostList } from './post-list';
 import { Filter } from './filter';
 
@@ -18,10 +18,10 @@ function PostsPage() {
   };
 
   return (
-    <Layout>
+    <Container maxWidth="lg">
       <Filter value={filterValue} onChangeHandler={onFilterChange} />
       <PostList filter={filterString} />
-    </Layout>
+    </Container>
   );
 }
 

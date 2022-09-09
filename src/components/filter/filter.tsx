@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, InputAdornment } from '@mui/material';
+import { Box, InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { BootstrapInput } from '../ui/bootstrap-input';
 
 interface IFilterProps {
   value: string;
@@ -11,16 +10,18 @@ interface IFilterProps {
 function Filter({ value, onChangeHandler }: IFilterProps) {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }} m={3}>
-      <BootstrapInput
-        placeholder="Filter by author..."
+      <TextField
+        label="Filter by author..."
+        variant="outlined"
         value={value}
         onChange={onChangeHandler}
-        startAdornment={
-          <InputAdornment position="start" disablePointerEvents>
-            <SearchIcon />
-          </InputAdornment>
-        }
-        size="small"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
       />
     </Box>
   );
