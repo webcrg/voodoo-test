@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getPosts, getUsers } from '@/api';
 
-interface IPost {
+export interface IPost {
   body: string;
   id: number;
   title: string;

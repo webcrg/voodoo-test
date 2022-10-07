@@ -1,7 +1,7 @@
 import React from 'react';
 import Masonry from 'react-masonry-css';
 import { PostItem } from './post-item';
-import usePosts from '@/hooks/usePosts';
+import { IPost } from '@/hooks/usePosts';
 
 const breakpointColumns = {
   default: 3,
@@ -11,35 +11,24 @@ const breakpointColumns = {
 };
 
 interface IPostListProps {
-  filter: string;
+  posts: IPost[];
 }
 
-const PostList = React.memo(({ filter }: IPostListProps) => {
-  const [posts] = usePosts();
-
-  return (
-    <Masonry
-      breakpointCols={breakpointColumns}
-      className="masonry-grid"
-      columnClassName="masonry-grid_column"
-    >
-      {posts.map((post) => {
-        const name = post.userName!.toLowerCase();
-        const filterText = filter.toLowerCase();
-        const isEmptyFilter = filterText === '';
-        const isFilterMatch = name.indexOf(filterText) !== -1;
-
-        return isEmptyFilter || isFilterMatch ? (
-          <PostItem
-            key={post.id}
-            title={post.title}
-            body={post.body}
-            userName={post.userName!}
-          />
-        ) : null;
-      })}
-    </Masonry>
-  );
-});
+const PostList = React.memo(({ posts }: IPostListProps) => (
+  <Masonry
+    breakpointCols={breakpointColumns}
+    className="masonry-grid"
+    columnClassName="masonry-grid_column"
+  >
+    {posts.map((post) => (
+      <PostItem
+        key={post.id}
+        title={post.title}
+        body={post.body}
+        userName={post.userName!}
+      />
+    ))}
+  </Masonry>
+));
 
 export { PostList };
