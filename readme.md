@@ -2,4 +2,4 @@
 npm i <br>
 npx vite
 
-демо: https://webcrg.github.io/voodoo/
+демо: https://webcrg.github.io/voodoo-test/
